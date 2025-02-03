@@ -1,7 +1,6 @@
 package com.api;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
  * Params
@@ -37,7 +36,8 @@ public class Main {
         if (orderFile != null && algorithm != null && dir != null && outputFilename != null) {
             
         } else if (generateRandomFile && dir != null && outputFilename != null) {
-            
+            IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(Optional.empty()));
+            System.out.println("Archivo generado...");
         } else {
             System.out.println("ERROR: parametros insuficientes. Usa -h o --help para ver la ayuda.");
         }
