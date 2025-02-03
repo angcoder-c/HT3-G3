@@ -1,6 +1,6 @@
 package com.api;
 
-import java.util.Optional;
+import java.util.ArrayList;
 
 /**
  * Params
@@ -34,9 +34,28 @@ public class Main {
         boolean generateRandomFile = IOApp.getParam(args, "--gen-rand-nums-file")!=null;
 
         if (orderFile != null && algorithm != null && dir != null && outputFilename != null) {
-            
+            ArrayList<Number> list = IOApp.readRandomList(orderFile);
+            ArrayList<Number> result = new ArrayList<>();
+            AlgorithmInterface sort = new Sort(list);
+            System.out.println(algorithm);
+
+            if (algorithm.equals("quicksort")) {
+                result = sort.quick();
+                IOApp.writeNewRandomList(dir, outputFilename, result);
+                System.out.println("Archivo ordenado...");
+            } else if (algorithm.equals("mergesort")) {
+
+            } else if (algorithm.equals("insertionsort")) {
+
+            } else if (algorithm.equals("radixsort")) {
+
+            } else if (algorithm.equals("bucketsort")) {
+
+            } else {
+                System.out.println("ERROR: algoritmo no soportado");
+            }
         } else if (generateRandomFile && dir != null && outputFilename != null) {
-            IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(Optional.empty()));
+            IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(3000));
             System.out.println("Archivo generado...");
         } else {
             System.out.println("ERROR: parametros insuficientes. Usa -h o --help para ver la ayuda.");

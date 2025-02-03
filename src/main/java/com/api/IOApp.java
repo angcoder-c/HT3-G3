@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -97,10 +96,10 @@ public class IOApp {
         return content;
     } 
 
-    public static ArrayList<Number> randomNumbers (Optional<Integer> size) {
+    public static ArrayList<Number> randomNumbers (int size) {
         Random rand = new Random();
         return rand.ints(
-            size.orElse(3000), 
+            size, 
             0,
             300
         )
