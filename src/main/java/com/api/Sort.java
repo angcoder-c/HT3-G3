@@ -1,7 +1,7 @@
 package com.api;
 
 import java.util.ArrayList;
-import java.util.List;
+import com.api.sorts.Quicksort;
 
 public class Sort implements AlgorithmInterface {
     private ArrayList<Number> source = new ArrayList<>();
@@ -12,8 +12,8 @@ public class Sort implements AlgorithmInterface {
 
     // quick sort
     public ArrayList<Number> quick() {
-
-        return new ArrayList<Number>();
+        Quicksort sort = new Quicksort();
+        return sort.sort(this.source);
     }
 
     public ArrayList<Number> merge () {
