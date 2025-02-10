@@ -21,17 +21,25 @@ import java.util.ArrayList;
 
 public class Main {
 
+    /**
+     * metodo principal para procesar los argumentos
+     * dependiendo de los argumentos el programa puede:
+     * 1. Ordenar un archivo de números utilizando el algoritmo de ordenamiento especificado y guardar el resultado en un archivo de salida.
+     * 2. Generar un archivo de números aleatorios.
+     * @param args Argumentos de la línea de comandos para el programa.
+     */
     public static void main(String[] args) {
-        if (args.length == 0 || IOApp.getParam(args, "-h") != null || IOApp.getParam(args, "-´-help") != null) {
+        if (args.length == 0 || IOApp.getParam(args, "-h") != null || IOApp.getParam(args, "--help") != null) {
             printHelp();
             return;
         }
 
+        // obtiene los argumentos para ordenar
         String orderFile = IOApp.getParam(args, "--order-file");
-        String algorithm = IOApp.getParam(args, "--with-algorithm"); 
+        String algorithm = IOApp.getParam(args, "--with-algorithm");
         String dir = IOApp.getParam(args, "--dir");
         String outputFilename = IOApp.getParam(args, "--output-filename");
-        boolean generateRandomFile = IOApp.getParam(args, "--gen-rand-nums-file")!=null;
+        boolean generateRandomFile = IOApp.getParam(args, "--gen-rand-nums-file") != null;
 
         if (orderFile != null && algorithm != null && dir != null && outputFilename != null) {
             ArrayList<Number> list = IOApp.readRandomList(orderFile);
@@ -61,20 +69,26 @@ public class Main {
                     validAlgorithm = false;
                     break;
             }
+
             if (validAlgorithm) {
                 IOApp.writeNewRandomList(dir, outputFilename, result);
                 System.out.println("Archivo ordenado...");
             }
 
+            // Si se desea generar un archivo con números aleatorios
         } else if (generateRandomFile && dir != null && outputFilename != null) {
-            IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(3000));
+            IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(3000));  // Escribe números aleatorios en un archivo
             System.out.println("Archivo generado...");
 
+            // Error si los parámetros son insuficientes
         } else {
-            System.out.println("ERROR: parametros insuficientes. Usa -h o --help para ver la ayuda.");
+            System.out.println("ERROR: parámetros insuficientes. Usa -h o --help para ver la ayuda.");
         }
     }
 
+    /**
+     * mensaje de ayuda explicando las opciones disponibles en la línea de comandos.
+     */
     private static void printHelp () {
         System.out.println("""
         
