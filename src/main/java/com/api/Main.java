@@ -39,24 +39,37 @@ public class Main {
             AlgorithmInterface sort = new Sort(list);
             System.out.println(algorithm);
 
-            if (algorithm.equals("quicksort")) {
-                result = sort.quick();
+            boolean validAlgorithm = true;
+            switch (algorithm) {
+                case "quicksort":
+                    result = sort.quick();
+                    break;
+                case "mergesort":
+                    result = sort.merge();
+                    break;
+                case "insertionsort":
+                    result = sort.insertion();
+                    break;
+                case "radixsort":
+                    result = sort.radix();
+                    break;
+                case "bucketsort":
+                    result = sort.bucket();
+                    break;
+                default:
+                    System.out.println("ERROR: algoritmo no soportado");
+                    validAlgorithm = false;
+                    break;
+            }
+            if (validAlgorithm) {
                 IOApp.writeNewRandomList(dir, outputFilename, result);
                 System.out.println("Archivo ordenado...");
-            } else if (algorithm.equals("mergesort")) {
-
-            } else if (algorithm.equals("insertionsort")) {
-
-            } else if (algorithm.equals("radixsort")) {
-
-            } else if (algorithm.equals("bucketsort")) {
-
-            } else {
-                System.out.println("ERROR: algoritmo no soportado");
             }
+
         } else if (generateRandomFile && dir != null && outputFilename != null) {
             IOApp.writeNewRandomList(dir, outputFilename, IOApp.randomNumbers(3000));
             System.out.println("Archivo generado...");
+
         } else {
             System.out.println("ERROR: parametros insuficientes. Usa -h o --help para ver la ayuda.");
         }

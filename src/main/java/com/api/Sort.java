@@ -1,6 +1,10 @@
 package com.api;
 
 import java.util.ArrayList;
+
+import com.api.sorts.Bucketsort;
+import com.api.sorts.Insertionsort;
+import com.api.sorts.Mergesort;
 import com.api.sorts.Quicksort;
 
 public class Sort implements AlgorithmInterface {
@@ -18,21 +22,25 @@ public class Sort implements AlgorithmInterface {
 
     public ArrayList<Number> merge () {
         // rene
-        return new ArrayList<Number>();
+        Mergesort sort = new Mergesort();
+        return sort.sort(this.source);
     }
 
     public ArrayList<Number> insertion () {
         // arturo
-        return new ArrayList<Number>();
+        Insertionsort sort = new Insertionsort();
+        return sort.sort(this.source);
     }
 
     public ArrayList<Number> radix () {
         // arturo
-        return new ArrayList<Number>();
+        Radixsort sort = new Radixsort();
+        return sort.sort(this.source);
     }
 
     public ArrayList<Number> bucket () {
         // rene
-        return new ArrayList<Number>();
+        Bucketsort sort = new Bucketsort();
+        return sort.sort(this.source);
     }
 }
