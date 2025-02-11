@@ -64,9 +64,12 @@ public class Quicksort {
         list.set(i, list.get(j));
         list.set(j, temp);
     }
-
+    // para el profiler
     public static void main(String[] args) {
         IOApp app = new IOApp();
-        sort(app.randomNumbers(3000));
+        // Desordenado
+        // sort(app.randomNumbers(3000));
+        // ordenado
+        sort(sort(app.randomNumbers(3000)));
     }
 }

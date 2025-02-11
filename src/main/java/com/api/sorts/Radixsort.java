@@ -1,5 +1,7 @@
 package com.api.sorts;
 
+import com.api.IOApp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -56,5 +58,15 @@ public class Radixsort {
 
     private long getLongValue(Number num) {
         return num.longValue();
+    }
+
+    // para el profiler
+    public static void main(String[] args) {
+        IOApp app = new IOApp();
+        Radixsort sort = new Radixsort();
+        // Desordenado
+        //sort.sort(app.randomNumbers(3000));
+        // ordenado
+        sort.sort(sort.sort(app.randomNumbers(3000)));
     }
 }

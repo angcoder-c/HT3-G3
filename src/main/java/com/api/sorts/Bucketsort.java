@@ -1,5 +1,7 @@
 package com.api.sorts;
 
+import com.api.IOApp;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -33,5 +35,15 @@ public class Bucketsort {
         }
 
         return list;
+    }
+
+    // para el profiler
+    public static void main(String[] args) {
+        IOApp app = new IOApp();
+        Bucketsort sort = new Bucketsort();
+        // Desordenado
+        // sort.sort(app.randomNumbers(3000));
+        // ordenado
+        sort.sort(sort.sort(app.randomNumbers(3000)));
     }
 }

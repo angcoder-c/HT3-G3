@@ -1,5 +1,7 @@
 package com.api.sorts;
 
+import com.api.IOApp;
+
 import java.util.ArrayList;
 
 public class Mergesort {
@@ -41,5 +43,15 @@ public class Mergesort {
         while (j < rightTemp.size()) {
             list.set(k++, rightTemp.get(j++));
         }
+    }
+
+    // para el profiler
+    public static void main(String[] args) {
+        IOApp app = new IOApp();
+        Mergesort sort = new Mergesort();
+        // Desordenado
+        // sort.sort(app.randomNumbers(3000));
+        // ordenado
+        sort.sort(sort.sort(app.randomNumbers(3000)));
     }
 }
